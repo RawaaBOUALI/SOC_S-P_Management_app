@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="template">
+<head>
+	<meta charset="UTF-8">
+	<title>Students</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<p></p>
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+				<div >
+				<a th:href = "@{/students/new}" class = "btn btn-primary btn-sm mb-3" style=" font-size: 12px; background-color: #9eb708; float: right;"> Add Student</a>
+			</div>
+					<table class="table">
+					 <tr>
+							<th> ID </th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Action</th>
+						</tr>
+						<tr  style="font-size: 13px;" th:each="p:${students}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.firstName}"></td>
+							<td th:text="${p.lastName}"></td>
+							<td th:text="${p.email}"></td>
+							<td th:text="${p.tel}"></td>
+							<td> 
+							<a th:href="@{/students/edit/{id}(id=${p.id})}" class="btn btn-primary" style="font-size: 12px; color: white;">Update</a>
+							<a th:href="@{/students/{id}(id=${p.id})}" class="btn btn-danger" style="font-size: 12px; color: white;">Delete</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
