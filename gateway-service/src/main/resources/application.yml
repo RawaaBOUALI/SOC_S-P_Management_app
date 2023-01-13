@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: r1
+        uri: lb://STUDENT-SERVICE
+        predicates:
+        - Path= /**
+      - id: r2
+        uri: http://localhost:8081/
+        predicates:
+        - Path= /products/**
+    discovery:         
+      enabled: true
+server: 
+  port: 8888
